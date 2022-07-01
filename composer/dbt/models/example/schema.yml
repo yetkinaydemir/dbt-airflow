@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: komtas-workshop #reference name
+    schema: komtas_model_poc #dataset
+    database: hb-dataanalytics-prod #project_id
+    tables:
+      - name: stg_billing_address
+      - name: stg_shipping_address
+      - name: stg_member
+      - name: stg_merchant
+      - name: stg_buyingcategory
+      - name: stg_order_header
+      - name: stg_order_items
+        tests:
+          - unique:
+              column_name: "id"
+
+      - name: stg_productcatalog
+        tests:
+          - unique:
+              column_name: sku
