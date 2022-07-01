@@ -1,0 +1,19 @@
+steps:
+  - name: gcr.io/cloud-builders/git
+    args:
+      - clone
+      - 'https://github.com/digitallency/dbt-hepsiburada'
+    id: repo-kopyala
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - cp
+      - composer/dags/*.py
+      - 'gs://${_COMPOSER_DAG_BUCKET}'
+    id: dag-dosyasi
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - cp
+      - '-r'
+      - composer/dbt/*
+      - 'gs://${_COMPOSER_ETL_SCRIPTS_BUCKET}'
+    id: etl-scripts
