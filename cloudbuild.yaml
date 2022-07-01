@@ -17,3 +17,6 @@ steps:
       - composer/dbt/*
       - 'gs://${_COMPOSER_ETL_SCRIPTS_BUCKET}'
     id: etl-scripts
+
+options:
+ logging: CLOUD_LOGGING_ONLY
