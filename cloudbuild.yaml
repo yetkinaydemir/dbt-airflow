@@ -15,7 +15,7 @@ steps:
       - cp
       - '-r'
       - composer/dbt/*
-      - 'gs://$_COMPOSER_ETL_SCRIPTS_BUCKET'
+      - 'gs://${_COMPOSER_DBT_BUCKET}'
     id: etl-scripts
 
 options:
