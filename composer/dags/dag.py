@@ -27,13 +27,20 @@ with DAG(
     #    profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
     #    dag=dag
     #)
+#
+#    task_3 = DbtTestOperator(
+#        task_id = 'test',
+#        project_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt/',
+#        profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/data/profiles/',
+#        dag=dag
+#    )
+#
 
-    task_3 = DbtTestOperator(
-        task_id = 'test',
-        project_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt/',
-        profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/data/profiles/',
+    task_4 = BashOperator(
+        task_id='bash',
+        bash_command='dbt snapshot --select dim_billing_address --project-dir /home/airflow/gcs/dbt --profiles-dir /home/airflow/gcs/data/profiles',
         dag=dag
     )
 
-    task_3
+    task_4
 
