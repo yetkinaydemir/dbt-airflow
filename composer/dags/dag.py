@@ -23,7 +23,8 @@ with DAG(
     task_2 = DbtSnapshotOperator(
         task_id = 'dim_billing_address_snapshot',
         select = 'dim_billing_address',
-        dir="https://console.cloud.google.com/storage/browser/europe-west1-dbt-build-4eb5c497-bucket/dbt/",
+        profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
+        dir="gs://europe-west1-dbt-build-4eb5c497-bucket/dbt/",
         dag=dag
     )
 
