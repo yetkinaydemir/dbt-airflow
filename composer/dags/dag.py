@@ -14,13 +14,13 @@ with DAG(
     schedule_interval='@once'
 ) as dag:
 
-    #task_2 = DbtSnapshotOperator(
-    #    task_id = 'dim_billing_address_snapshot',
-    #    select = 'dim_billing_address',
-    #    #project_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
-    #    profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
-    #    dag=dag
-    #)
+    task_2 = DbtSnapshotOperator(
+        task_id = 'dim_billing_address_snapshot',
+        select = 'dim_billing_address',
+        project_dir = '/home/airflow/gcs/dags/dbt/',
+        profiles_dir = '/home/airflow/gcs/data/profiles/',
+        dag=dag
+    )
 #
 #    task_3 = DbtTestOperator(
 #        task_id = 'test',
@@ -30,11 +30,11 @@ with DAG(
 #    )
 #
 
-    task_4 = BashOperator(
-        task_id='bash',
-        bash_command='dbt snapshot --select dim_billing_address --project-dir /home/airflow/gcs/dags/dbt/ --profiles-dir /home/airflow/gcs/data/profiles/',
-        dag=dag
-    )
+    #task_4 = BashOperator(
+    #    task_id='bash',
+    #    bash_command='dbt snapshot --select dim_billing_address --project-dir /home/airflow/gcs/dags/dbt/ --profiles-dir /home/airflow/gcs/data/profiles/',
+    #    dag=dag
+    #)
 
-    task_4
+    task_2
 
