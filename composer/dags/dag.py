@@ -31,7 +31,6 @@ with DAG(
     task_3 = DbtTestOperator(
         task_id = 'test',
         project_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
-        profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
         dag=dag
     )
 
