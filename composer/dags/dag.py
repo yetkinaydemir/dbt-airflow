@@ -14,16 +14,17 @@ with DAG(
     schedule_interval='@once'
 ) as dag:
 
-    task_1 = BashOperator(
-        task_id = 'dbt_directory',
-        bash_command='dbt snapshot --select dim_billing_address --project-dir gs://europe-west1-dbt-build-4eb5c497-bucket/dags/dbt',
+    #task_1 = BashOperator(
+    #    task_id = 'dbt_directory',
+    #    bash_command='dbt snapshot --select dim_billing_address --project-dir=gs://europe-west1-dbt-build-4eb5c497-bucket/dags/dbt',
+    #    dag=dag
+    #)
+
+    task_2 = DbtSnapshotOperator(
+        task_id = 'dim_billing_address_snapshot',
+        select = 'dim_billing_address',
+        dbt_bin='gs://europe-west1-dbt-build-4eb5c497-bucket/dags/dbt',
         dag=dag
     )
 
-#    task_2 = DbtSnapshotOperator(
-#        task_id = 'dim_billing_address_snapshot',
-#        select = 'dim_billing_address',
-#        dag=dag
-#    )
-
-    task_1
+    task_2
