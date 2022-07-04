@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from airflow_dbt.operators.dbt_operator import DbtSnapshotOperator
+from airflow_dbt_python.operators.dbt import DbtSnapshotOperator
 from airflow.utils.dates import days_ago 
 
 default_args = {
@@ -23,8 +23,8 @@ with DAG(
     task_2 = DbtSnapshotOperator(
         task_id = 'dim_billing_address_snapshot',
         select = 'dim_billing_address',
-        project_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
-        profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
+        #project_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
+        #profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
         dag=dag
     )
 
