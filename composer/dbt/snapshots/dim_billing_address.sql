@@ -1,6 +1,6 @@
 {% snapshot dim_billing_address %}
     {{ config(
-        target_schema = 'komtas_model_poc',
+        target_schema = 'hepsiburada',
         strategy = 'check',
         unique_key = 'billingAddress_addressRefId',
         check_cols = 'all',
@@ -9,6 +9,6 @@
 
     SELECT 
         *       
-    FROM `hb-dataanalytics-prod`.`komtas_model_poc`.`stg_billing_address`
+    FROM `komtas-workshop`.`hepsiburada`.`stg_billing_address`
        
 {% endsnapshot %}
