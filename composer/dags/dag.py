@@ -1,5 +1,7 @@
+from select import select
 from airflow import DAG
 from airflow.operators.bash import BashOperator
+from airflow.operators.dbt_operator import DbtRunOperator
 from airflow.utils.dates import days_ago 
 
 default_args = {
@@ -13,9 +15,9 @@ with DAG(
     schedule_interval='@once'
 ) as dag:
 
-    task_1 = BashOperator(
+    task_1 = DbtRunOperator(
         task_id = 'dim_billing_address_snapshot',
-        bash_command = 'dbt snapshot --select dim_billing_address',
+        select = 'dim_billing_address',
         dag=dag
     )
 
