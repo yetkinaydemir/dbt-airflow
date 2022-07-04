@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: komtas-workshop #reference name
-    schema: komtas_model_poc #dataset
-    database: hb-dataanalytics-prod #project_id
+    schema: hepsiburada #komtas_model_poc #dataset
+    database: komtas-workshop #hb-dataanalytics-prod #project_id
     tables:
       - name: stg_billing_address
       - name: stg_shipping_address
