@@ -4,7 +4,7 @@ hepsiburada:
       dataset: hepsiburada #komtas_model_poc
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: gs://europe-west1-dbt-build-4eb5c497-bucket/data/profiles/komtas-workshop-e726f7a31ab0.json
+      keyfile: /home/airflow/gcs/data/profiles/komtas-workshop-e726f7a31ab0.json
       location: EU
       method: service-account
       priority: interactive
