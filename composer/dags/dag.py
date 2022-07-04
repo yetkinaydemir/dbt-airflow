@@ -16,7 +16,7 @@ with DAG(
 
     task_2 = DbtSnapshotOperator(
         task_id = 'dim_billing_address_snapshot',
-        select = 'dim_billing_address',
+        select = ['dim_billing_address'],
         project_dir = '/home/airflow/gcs/dags/dbt/',
         profiles_dir = '/home/airflow/gcs/data/profiles/',
         dag=dag
