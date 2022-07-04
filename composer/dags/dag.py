@@ -23,7 +23,7 @@ with DAG(
     task_2 = DbtSnapshotOperator(
         task_id = 'dim_billing_address_snapshot',
         select = 'dim_billing_address',
-        dir="dbt",
+        dir="/home/airflow/gcs/dags/dbt",
         dag=dag
     )
 
