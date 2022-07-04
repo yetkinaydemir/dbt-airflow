@@ -16,7 +16,7 @@ with DAG(
 
     task_1 = BashOperator(
         task_id = 'dbt_directory',
-        bash_command='cd /home/airflow/gcs/dags/dbt && dbt snapshot --select dim_billing_address',
+        bash_command='dbt snapshot --select dim_billing_address --project-dir /home/airflow/gcs/dags/dbt',
         dag=dag
     )
 
