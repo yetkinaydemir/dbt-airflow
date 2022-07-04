@@ -38,7 +38,7 @@ with DAG(
 
     task_4 = BashOperator(
         task_id='bash',
-        bash_command='dbt snapshot --select dim_billing_address --project-dir /home/airflow/gcs/dbt --profiles-dir /home/airflow/gcs/data/profiles',
+        bash_command='dbt snapshot --select dim_billing_address --project-dir /home/airflow/gcs/dbt/ --profiles-dir /home/airflow/gcs/data/profiles/',
         dag=dag
     )
 
