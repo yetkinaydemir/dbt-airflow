@@ -24,7 +24,6 @@ with DAG(
         task_id = 'dim_billing_address_snapshot',
         select = 'dim_billing_address',
         profiles_dir = 'gs://europe-west1-dbt-build-4eb5c497-bucket/dbt',
-        dir="gs://europe-west1-dbt-build-4eb5c497-bucket/dbt/",
         dag=dag
     )
 
