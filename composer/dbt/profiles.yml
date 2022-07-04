@@ -4,11 +4,11 @@ hepsiburada:
       dataset: komtas_model_poc
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: C:/Users/ytkna/Downloads/komtas-dwh-modeling-key.json
+      keyfile: C:/Users/ytkna/Downloads/komtas-workshop-e726f7a31ab0.json
       location: EU
       method: service-account
       priority: interactive
-      project: hb-dataanalytics-prod
+      project: komtas-workshop
       threads: 1
       type: bigquery
   target: dev
