@@ -16,14 +16,14 @@ with DAG(
 
     task_1 = BashOperator(
         task_id = 'dbt_directory',
-        bash_command='cd /home/airflow/gcs/dags/dbt',
+        bash_command='cd /home/airflow/gcs/dags/dbt && dbt snapshot --select dim_billing_address',
         dag=dag
     )
 
-    task_2 = DbtSnapshotOperator(
-        task_id = 'dim_billing_address_snapshot',
-        select = 'dim_billing_address',
-        dag=dag
-    )
+#    task_2 = DbtSnapshotOperator(
+#        task_id = 'dim_billing_address_snapshot',
+#        select = 'dim_billing_address',
+#        dag=dag
+#    )
 
-    task_1 >> task_2
+    task_1
