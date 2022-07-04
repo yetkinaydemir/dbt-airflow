@@ -5,7 +5,7 @@ hepsiburada:
       job_execution_timeout_seconds: 300
       job_retries: 1
       keyfile: /home/airflow/gcs/data/profiles/komtas-workshop-e726f7a31ab0.json
-      location: EU
+      location: europe-west1
       method: service-account
       priority: interactive
       project: komtas-workshop
