@@ -23,7 +23,7 @@ with DAG(
     task_2 = DbtSnapshotOperator(
         task_id = 'dim_billing_address_snapshot',
         select = 'dim_billing_address',
-        dir="gs://europe-west1-dbt-build-4eb5c497-bucket/dags/dbt/",
+        project_dir="gs://europe-west1-dbt-build-4eb5c497-bucket/dags/dbt/",
         dag=dag
     )
 
