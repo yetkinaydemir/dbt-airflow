@@ -2,7 +2,7 @@ steps:
   - name: gcr.io/cloud-builders/git
     args:
       - clone
-      - 'https://github.com/digitallency/dbt-hepsiburada'
+      - 'ssh://git@github.com:digitallency/dbt-hepsiburada.git'
     id: repo-kopyala
   - name: gcr.io/cloud-builders/gsutil
     args:
