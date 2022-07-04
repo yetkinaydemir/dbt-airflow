@@ -14,7 +14,13 @@ with DAG(
     schedule_interval='@once'
 ) as dag:
 
-    task_1 = DbtSnapshotOperator(
+    task_1 = BashOperator(
+        task_id = 'dbt directory',
+        bash_command='cd /home/airflow/dags/dbt',
+        dag=dag
+    )
+
+    task_2 = DbtSnapshotOperator(
         task_id = 'dim_billing_address_snapshot',
         select = 'dim_billing_address',
         dag=dag
