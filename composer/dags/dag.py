@@ -1,7 +1,7 @@
 from select import select
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from airflow-dbt.operators.dbt_operator import DbtRunOperator
+from airflow_dbt.operators.dbt_operator import DbtRunOperator
 from airflow.utils.dates import days_ago 
 
 default_args = {
