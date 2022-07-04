@@ -16,7 +16,7 @@ with DAG(
 
     task_1 = BashOperator(
         task_id = 'dbt directory',
-        bash_command='cd /home/airflow/dags/dbt',
+        bash_command='cd /home/airflow/gcs/dags/dbt',
         dag=dag
     )
 
