@@ -3,20 +3,34 @@ steps:
     args:
       - clone
       - 'https://github.com/digitallency/dbt-hepsiburada'
-    id: repo-kopyala
+    id: copy-github-repository
   - name: gcr.io/cloud-builders/gsutil
     args:
       - cp
       - composer/dags/*.py
       - 'gs://${_COMPOSER_DAG_BUCKET}'
-    id: dag-dosyasi
+    id: dag-file
   - name: gcr.io/cloud-builders/gsutil
     args:
       - cp
       - '-R'
       - composer/dbt/*
       - 'gs://${_COMPOSER_DBT_BUCKET}'
-    id: dbt
+    id: copy-dbt
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - cp
+      - '-R'
+      - composer/dbt/profiles.yml
+      - 'gs://${_COMPOSER_PROFILES_BUCKET}'
+    id: copy-profiles-yaml
+  - name: gcr.io/cloud-builders/gsutil
+    args:
+      - cp
+      - '-R'
+      - composer/dbt/dbt_project.yml
+      - 'gs://${_COMPOSER_DBT_PROJECT_BUCKET}'
+    id: copy-dbt-project-yaml
 
 options:
  logging: CLOUD_LOGGING_ONLY
