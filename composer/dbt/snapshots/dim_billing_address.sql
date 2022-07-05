@@ -8,6 +8,7 @@
     ) }}
 
     SELECT 
+        {{ dbt_utils.surrogate_key(['billingAddress_addressRefId'])}} as dim_billing_address_sk,
         *       
     FROM `komtas-workshop`.`hepsiburada`.`stg_billing_address`
        
