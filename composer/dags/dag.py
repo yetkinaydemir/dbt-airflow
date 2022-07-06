@@ -22,12 +22,5 @@ with DAG(
         dag=dag
     )
 
-    task_2 = DbtRunOperator(
-        task_id = 'run_all',
-        project_dir = '/home/airflow/gcs/dags/dbt/',
-        profiles_dir = '/home/airflow/gcs/data/profiles/',
-        dag=dag
-    )
-
-    task_2
+    task_1
 
