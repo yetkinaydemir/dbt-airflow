@@ -7,7 +7,7 @@
 with fact_order_header_{{ var("date") }} as (
         SELECT
             *
-        FROM `hb-dataanalytics-prod`.`komtas_model_poc`.`fact_order_header`
+        FROM `komtas-workshop`.`hepsiburada`.`fact_order_header`
         WHERE date(orderDateTime) = PARSE_DATE('%Y%m%d', CAST({{var("date")}} AS STRING))
 )
 

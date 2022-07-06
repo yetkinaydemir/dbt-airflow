@@ -20,7 +20,7 @@ WITH source_data AS (
             tenant,
             line_item_index,
             i.sku,
-            p.dbt_scd_id as sku_sk,
+            p.dim_productcatalog_sk,
             name,
             unitPrice_value,
             quantity,
@@ -31,7 +31,7 @@ WITH source_data AS (
             initialDelivery_optionName,
             initialDelivery_shippingMethodId,
             initialDelivery_isJetDelivery,
-            m.dbt_scd_id as merchant_sk,
+            m.dim_merchant_sk,
             estimatedShippingDate,
             estimatedArrivalDate,
             isFastShipping,
@@ -47,9 +47,9 @@ WITH source_data AS (
             {{dbt_utils.current_timestamp()}} as dbt_created_at
 
         FROM {{source('komtas-workshop','stg_order_items')}} i
-        left join `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_merchant` m 
+        left join `komtas-workshop`.`hepsiburada`.`dim_merchant` m 
         on i.merchant_id = m.merchant_id and i.orderDateTime>=m.dbt_valid_from and i.orderDateTime<m.dbt_valid_to
-        left join `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_product_catalog` p 
+        left join `komtas-workshop`.`hepsiburada`.`dim_product_catalog` p 
         on i.sku=p.sku and i.orderDateTime>=p.dbt_valid_from and i.orderDateTime<p.dbt_valid_to
 
     )

@@ -1,6 +1,6 @@
 {% snapshot dim_product_catalog %}
     {{ config(
-        target_schema = 'komtas_model_poc',
+        target_schema = 'hepsiburada',
         strategy = 'check',
         unique_key = 'sku',
         check_cols = 'all',
@@ -9,6 +9,7 @@
 
 
     SELECT 
+       {{ dbt_utils.surrogate_key(['sku'])}} as dim_productcatalog_sk ,
        productid,
        sku,
        createddate,
@@ -34,7 +35,7 @@
        h6_desc
     
     FROM {{ source('komtas-workshop', 'stg_productcatalog')}} p
-    LEFT JOIN `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_buying_category` s
+    LEFT JOIN `komtas-workshop`.`hepsiburada`.`dim_buying_category` s
     ON p.buyingcategoryid = s.buyingcategoryid
     AND p.createddate>= s.dbt_valid_from and p.createddate<s.dbt_valid_to
 

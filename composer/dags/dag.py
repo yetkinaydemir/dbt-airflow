@@ -1,6 +1,6 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
-from airflow_dbt_python.operators.dbt import DbtSnapshotOperator, DbtTestOperator
+from airflow_dbt_python.operators.dbt import DbtSnapshotOperator, DbtRunOperator
 from airflow.utils.dates import days_ago 
 
 default_args = {
@@ -22,5 +22,12 @@ with DAG(
         dag=dag
     )
 
-    task_1
+    task2 = DbtRunOperator(
+        task_id = 'run_all',
+        project_dir = '/home/airflow/gcs/dags/dbt/',
+        profiles_dir = '/home/airflow/gcs/data/profiles/',
+        dag=dag
+    )
+
+    task_2
 

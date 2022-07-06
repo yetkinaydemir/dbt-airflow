@@ -1,6 +1,6 @@
 {% snapshot dim_merchant %}
     {{ config(
-        target_schema = 'komtas_model_poc',
+        target_schema = 'hepsiburada',
         strategy = 'check',
         unique_key = 'merchant_id',
         check_cols = 'all',
@@ -8,6 +8,7 @@
     ) }}
 
     SELECT
+        {{ dbt_utils.surrogate_key(['merchant_id'])}} as dim_merchant_sk ,
         *
     FROM
         {{ source(

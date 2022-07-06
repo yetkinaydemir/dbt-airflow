@@ -11,16 +11,16 @@
 
 WITH skey_shipping_address AS(
         SELECT *
-        FROM `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_shipping_address`
+        FROM `komtas-workshop`.`hepsiburada`.`dim_shipping_address`
 ),
 
 skey_billing_address AS(
         SELECT *
-        FROM `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_billing_address`
+        FROM `komtas-workshop`.`hepsiburada`.`dim_billing_address`
 ),
 skey_member AS(
         SELECT *
-        FROM `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_member`
+        FROM `komtas-workshop`.`hepsiburada`.`dim_member`
 ),
 
 source_data AS (
@@ -29,13 +29,13 @@ source_data AS (
             id,
             updatedDate,
             ordernumber,
-            m.member_id as member_sk,
+            m.dim_member_sk,
             user_email,
             user_firstName,
             user_lastName,
             user_createdDate,
-            s.dbt_scd_id as billingAddress_sk,
-            b.dbt_scd_id as shippingAddress_sk,
+            b.dim_billing_address_sk,
+            s.dim_shipping_address_sk,
             totalAmount_value,
             totalSellingPrice_value,
             totalSellingPrice_currencyCode,
@@ -50,12 +50,12 @@ source_data AS (
             {{dbt_utils.current_timestamp()}} as dbt_created_at
 
 
-        FROM `hb-dataanalytics-prod`.`komtas_model_poc`.`stg_order_header` o
-        join `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_shipping_address` s on o.shippingAddress_addressRefId=s.shippingAddress_addressRefId
+        FROM `komtas-workshop`.`hepsiburada`.`stg_order_header` o
+        join `komtas-workshop`.`hepsiburada`.`dim_shipping_address` s on o.shippingAddress_addressRefId=s.shippingAddress_addressRefId
         and o.orderDateTime>=s.dbt_valid_from and o.orderDateTime<s.dbt_valid_to
-        join `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_billing_address` b on o.billingAddress_addressRefId=b.billingAddress_addressRefId
+        join `komtas-workshop`.`hepsiburada`.`dim_billing_address` b on o.billingAddress_addressRefId=b.billingAddress_addressRefId
         and o.orderDateTime>=b.dbt_valid_from and o.orderDateTime<b.dbt_valid_to
-        join `hb-dataanalytics-prod`.`komtas_model_poc`.`dim_member` m on o.user_refid=m.member_id
+        join `komtas-workshop`.`hepsiburada`.`dim_member` m on o.user_refid=m.member_id
         and o.orderDateTime>=m.dbt_valid_from and o.orderDateTime<m.dbt_valid_to
 
     )
