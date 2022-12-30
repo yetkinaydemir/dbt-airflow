@@ -7,6 +7,7 @@ This repository is not including the whole project. It only gives you an idea on
 ## Built With ##
 
 * dbt
+* Python
 * Airflow
 * Cloud Composer(Google Cloud Platform)
 * Cloud Build(Google Cloud Platform)
@@ -14,7 +15,7 @@ This repository is not including the whole project. It only gives you an idea on
 
 ## Requirements ##
 
-1. Install a code editor for building your dbt project, creating DAG script, creating yaml file for cloud build.
+1. Install a code editor for building your dbt project, creating DAG script, creating yaml file for cloud build. I have used VSCode.
 2. Install dbt-core and dbt-bigquery with ``pip`` using [this link](https://docs.getdbt.com/docs/get-started/pip-install).
 3. Have an Airflow environment whether it is on-prem or on cloud to be able to run DAG script.
 4. Google Cloud Platform(GCP) project.
